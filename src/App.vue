@@ -1,6 +1,6 @@
 <script setup>
 import {computed, onBeforeUnmount, onMounted, reactive, ref, watch} from 'vue'
-import { bitable, ToastType } from '@lark-base-open/js-sdk';
+import { bitable, ToastType, FieldType } from '@lark-base-open/js-sdk';
 import Button from 'primevue/button';
 import InputSwitch from 'primevue/inputswitch';
 import Panel from 'primevue/panel';
@@ -19,6 +19,16 @@ const fillGuids = async () => {
       toastType: ToastType.error,
       message: '未选择有效列'
     })
+    return
+  }
+
+  const fieldMeta = await table.getFieldMetaById(selection.fieldId);
+  if (fieldMeta.type != FieldType.Text) {
+    await bitable.ui.showToast({
+      toastType: ToastType.error,
+      message: '只能对文本字段使用'
+    })
+    return
   }
   
   const table = await bitable.base.getTable(selection.tableId)
@@ -26,8 +36,6 @@ const fillGuids = async () => {
   for (const record of recordList) {
     const cell = await record.getCellByField(selection.fieldId);
     const val = await cell.getValue();
-    console.log(val)
-
     if (!val || forceReplace.value) {
       await cell.setValue(uuidv4())
     }
