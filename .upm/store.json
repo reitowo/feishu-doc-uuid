@@ -1,1 +1,0 @@
-{"version":2,"languages":{"nodejs-npm":{"specfileHash":"5fb47905d277319a0c468445b4b6ebc6","lockfileHash":"cbe43fc467a9cabff7ff9fe1bb3566c9"},"nodejs-yarn":{"specfileHash":"9c7134155a602c555dd1acb4949c3d60","lockfileHash":"2430d565c4b767501d30ce7b10f50a7c","guessedImports":["@vitejs/plugin-vue","vue"],"guessedImportsHash":"235bea674db17af72541a907bd889b58"}}}

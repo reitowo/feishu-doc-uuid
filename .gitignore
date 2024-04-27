@@ -9,12 +9,12 @@ lerna-debug.log*
 
 node_modules
 .DS_Store
-dist
 dist-ssr
 coverage
 *.local
 .cache
 .config
+.upm
 
 /cypress/videos/
 /cypress/screenshots/
